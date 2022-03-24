@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dinda CV Registrasi</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="assets/css/css" rel="stylesheet">
+
+  </head>
+<body>
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Registration Form</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fas fa-lock"></i></span>
+            <input type="password" name="password" placeholder="Password" required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fas fa-lock"></i></span>
+            <input type="password" name="password" placeholder="Re-type Password" required />
+          </div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field"> <span><i aria-hidden="true" class="fas fa-user"></i></span>
+                <input type="text" name="name" placeholder="First Name" />
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field"> <span><i aria-hidden="true" class="fas fa-user"></i></span>
+                <input type="text" name="name" placeholder="Last Name" required />
+              </div>
+            </div>
+          </div>
+            	<div class="input_field radio_option">
+              <input type="radio" name="radiogroup1" id="rd1">
+              <label for="rd1">Male</label>
+              <input type="radio" name="radiogroup1" id="rd2">
+              <label for="rd2">Female</label>
+              </div>
+              <div class="input_field select_option">
+                <select name="plan" id="plan" class="form-control">
+                  <option value="">Select Plan</option>
+                  <option value="1">Free</option>
+                  <option value="2">Premium</option>
+                </select>
+                <div class="select_arrow"></div>
+              </div>
+
+              <div class="input_field select_option" id="pay">
+                <select name="pay" id="pay" class="form-control">
+                  <option>Select Pembayaran</option>
+                  <option>OVO</option>
+                  <option>Dana</option>
+                </select>
+                <div class="select_arrow"></div>
+              </div>
+            <!-- <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb1">
+    			<label for="cb1">I agree with terms and conditions</label>
+            </div>
+            <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb2">
+    			<label for="cb2">I want to receive the newsletter</label>
+            </div> -->
+          <input class="button" type="submit" value="Register" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <p class="credit">Developed by <a href="http://www.designtheway.com" target="_blank">Design the way</a></p> -->
+<script src="assets/js/main.js"></script>
+<script>
+  $(document).ready(function() {
+  $("#pay").hide();
+
+  $("#plan").change(function(){
+    var _this = $(this);
+    if (_this.val() == 2){
+      $("#pay").show();
+
+    }else{
+      $("#pay").hide();
+    }
+  });
+ });
+</script>
+</body>
+
+
+</html>
