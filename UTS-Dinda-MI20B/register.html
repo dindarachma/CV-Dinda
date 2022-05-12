@@ -1,0 +1,158 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Registrasi Page</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm rounded text-light" style="background-color: #212529">
+            <form action="#" method="POST" id="formRegist">
+              <div class="text-center">
+                
+                <h1 class="text-light">Registrasi</h1>
+                <p>Silahkan Daftar dengan Email Anda!</p>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+
+               <div class="mb-3" class="input_field select_option" >
+                <label for="plan" class="form-label">Plan</label>
+                 <select name="plan" id="plan" class="form-control">
+                  <option value="">Plan</option>
+                  <option value="1">Free</option>
+                  <option value="2">Premium</option>
+                </select>
+               </div>
+
+               <div class="mb-3" class="input_field select_option" id="pembayaran">
+                <label for="pembayaran" class="form-label">Pembayaran</label>
+                  <select name="pembayaran" id="pembayaran" class="form-control">
+                    <option>Pembayaran</option>
+                    <option>OVO</option>
+                    <option>Dana</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn btn-info" name="register" id="btnDaftar">Register</button>
+            </form>
+            <div align="center">
+              <p>Sudah Punya Akun?</p>
+              <a href="index.html"><button class="btn btn-danger">Login</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
+    <!-- <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+    <script src="assets/js/main.js"></script>
+<script>
+  $(document).ready(function() {
+  $("#pembayaran").hide();
+
+  $("#plan").change(function(){
+    var _this = $(this);
+    if (_this.val() == 2){
+      $("#pembayaran").show();
+
+    }else{
+      $("#pembayaran").hide();
+    }
+  });
+ });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+
+
+function daftar(dataForm){
+var biodata = dataForm;
+$.ajax({
+type : 'POST',
+url : 'https://lanakomunika.politekniklp3i-tasikmalaya.ac.id/api/register',//Memanggil Endpoint
+
+async : false,
+dataType : 'json',
+data : biodata,
+success:function(response){
+if (response.status == "200") {
+
+Swal.fire({
+type: 'success',
+title: 'Daftar Berhasil!',
+text: 'Tunggu sejenak',
+timer: 8000,
+showCancelButton: false,
+showConfirmButton: false
+})
+.then (function() {
+window.location.href = "https://lanakomunika.politekniklp3i-tasikmalaya.ac.id";
+});
+
+} else {
+
+ Swal.fire({
+ type: 'error',
+ title: 'Daftar Gagal!',
+ text: 'silahkan coba lagi!'
+ });
+
+ }
+
+ console.log(response);
+
+ },
+
+ error:function(response){
+
+ Swal.fire({
+ type: 'error',
+ title: 'Opps!',
+ text: 'server error!'
+ });
+
+ console.log(response);
+
+ }
+
+ });
+ }
+
+ $('#btnDaftar').on('click',function(){
+ var dataForm = $('#formRegist').serialize();
+ daftar(dataForm);
+ });
+});
+
+
+</script>
+
+
+  </body>
+</html>
